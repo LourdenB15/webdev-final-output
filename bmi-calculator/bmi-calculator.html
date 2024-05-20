@@ -44,23 +44,14 @@
     </div>
     <script>
       function calculateBMI() {
-        // Get the weight and height values from the input fields
         let weight = document.getElementById('weight').value;
         let height = document.getElementById('height').value;
-
         if (!height || !weight) return;
         if (height <= 0 || weight <= 0) return;
-        // Convert height from cm to meters
         height = height / 100;
-
-        // Calculate BMI
         let bmi = weight / (height * height);
-
-        // Display the result
         let result = document.getElementById('result');
         result.textContent = 'Your BMI is ' + bmi.toFixed(2);
-
-        // Display a message based on the BMI value
         if (bmi < 18.5) {
           result.textContent += ' (Underweight)';
         } else if (bmi >= 18.5 && bmi < 24.9) {
