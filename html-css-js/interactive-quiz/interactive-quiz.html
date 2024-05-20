@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Quiz</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        background-color: #f0f0f0;
+      }
+      #quiz-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+      }
+      .question {
+        margin-bottom: 20px;
+      }
+      input {
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        border-radius: 0.5em;
+        border: 2px solid gray;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      #score {
+        margin-top: 20px;
+        font-size: 1.2em;
+      }
+
+      h1 {
+        margin-bottom: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Interactive Quiz</h1>
+    <div id="quiz-container">
+      <div class="quiz-block">
+        <div id="quiz"></div>
+        <input type="text" id="answer" placeholder="Type your answer here" />
+        <button onclick="submitAnswer()">Submit</button>
+      </div>
+      <button
+        class="restart"
+        onclick="refreshPage()"
+        style="display: none; margin: auto"
+      >
+        Restart
+      </button>
+      <p id="score"></p>
+    </div>
+
+    <script>
+      const quizData = [
+        {
+          question: 'What is the capital of France?',
+          answer: 'Paris',
+        },
+        {
+          question: 'Which planet is known as the Red Planet?',
+          answer: 'Mars',
+        },
+        {
+          question: 'What is the largest ocean on Earth?',
+          answer: 'Pacific Ocean',
+        },
+        {
+          question: 'What is the smallest prime number?',
+          answer: '2',
+        },
+        {
+          question: "Who wrote 'Romeo and Juliet'?",
+          answer: 'William Shakespeare',
+        },
+      ];
+
+      let currentQuestionIndex = 0;
+      let score = 0;
+
+      function loadQuestion() {
+        const questionContainer = document.getElementById('quiz');
+        questionContainer.innerHTML = '';
+
+        const currentQuestion = quizData[currentQuestionIndex];
+        const questionElement = document.createElement('div');
+        questionElement.className = 'question';
+        questionElement.textContent = currentQuestion.question;
+
+        questionContainer.appendChild(questionElement);
+      }
+
+      function submitAnswer() {
+        const answerInput = document.getElementById('answer');
+        const userAnswer = answerInput.value.trim();
+        const currentQuestion = quizData[currentQuestionIndex];
+
+        if (userAnswer.toLowerCase() === currentQuestion.answer.toLowerCase()) {
+          score++;
+        }
+
+        answerInput.value = '';
+        currentQuestionIndex++;
+
+        if (currentQuestionIndex < quizData.length) {
+          loadQuestion();
+        } else {
+          showScore();
+        }
+      }
+
+      function showScore() {
+        const questionContainer = document.getElementById('quiz');
+        questionContainer.innerHTML = '';
+        const scoreElement = document.getElementById('score');
+        window.document.querySelector('.quiz-block').style.display = 'none';
+        window.document.querySelector('.restart').style.display = 'block';
+        scoreElement.textContent = `Your score: ${score} / ${quizData.length}`;
+      }
+
+      loadQuestion();
+
+      function refreshPage() {
+        location.href = location.href;
+      }
+    </script>
+  </body>
+</html>
