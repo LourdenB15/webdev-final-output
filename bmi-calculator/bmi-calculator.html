@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI calculator</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        /* font-size: 3em; */
+      }
+
+      .wrapper {
+        border: 5px dashed black;
+        border-radius: 1em;
+        padding: 1em;
+        background-color: gray;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container" class="wrapper">
+      <h1>BMI Calculator</h1>
+      <label for="weight">Weight(kg)</label>
+      <input type="number" id="weight" />
+      <br />
+      <label for="height">Height(cm)</label>
+      <input type="number" id="height" />
+      <br />
+      <button onclick="calculateBMI()">Submit</button>
+      <p id="result"></p>
+    </div>
+    <script>
+      function calculateBMI() {
+        // Get the weight and height values from the input fields
+        let weight = document.getElementById('weight').value;
+        let height = document.getElementById('height').value;
+
+        if (!height || !weight) return;
+        if (height <= 0 || weight <= 0) return;
+        // Convert height from cm to meters
+        height = height / 100;
+
+        // Calculate BMI
+        let bmi = weight / (height * height);
+
+        // Display the result
+        let result = document.getElementById('result');
+        result.textContent = 'Your BMI is ' + bmi.toFixed(2);
+
+        // Display a message based on the BMI value
+        if (bmi < 18.5) {
+          result.textContent += ' (Underweight)';
+        } else if (bmi >= 18.5 && bmi < 24.9) {
+          result.textContent += ' (Normal)';
+        } else if (bmi >= 25 && bmi < 29.9) {
+          result.textContent += ' (Overweight)';
+        } else {
+          result.textContent += ' (Obesity)';
+        }
+      }
+    </script>
+  </body>
+</html>
