@@ -1,0 +1,20 @@
+.mb-0 {
+  margin-bottom: -5px !important;
+}
+.mt-0 {
+  margin-top: -10px !important;
+}
+.bg-image {
+  background-image: url(images/fun-run.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+.bg-light {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+@media (max-width: 576px) {
+  .sm-font {
+    font-size: 12px;
+  }
+}
