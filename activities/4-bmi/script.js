@@ -3,7 +3,6 @@ function calculateBMI() {
   let height = document.getElementById('height').value;
   if (!height || !weight) return;
   if (height <= 0 || weight <= 0) return;
-  height = height / 100;
   let bmi = weight / (height * height);
   let result = document.getElementById('result');
   result.textContent = 'Your BMI is ' + bmi.toFixed(2);
