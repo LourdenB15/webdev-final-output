@@ -1,23 +1,23 @@
 const quizData = [
   {
-    question: 'What is the capital of France?',
-    answer: 'Paris',
+    question: '1+0?',
+    answer: '1',
   },
   {
-    question: 'Which planet is known as the Red Planet?',
-    answer: 'Mars',
-  },
-  {
-    question: 'What is the largest ocean on Earth?',
-    answer: 'Pacific Ocean',
-  },
-  {
-    question: 'What is the smallest prime number?',
+    question: '2+0?',
     answer: '2',
   },
   {
-    question: "Who wrote 'Romeo and Juliet'?",
-    answer: 'William Shakespeare',
+    question: '3+0?',
+    answer: '3',
+  },
+  {
+    question: '4+0?',
+    answer: '4',
+  },
+  {
+    question: '5+0?',
+    answer: '5',
   },
 ];
 
